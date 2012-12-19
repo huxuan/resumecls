@@ -17,9 +17,6 @@ EXAMPLEZH=example-zh
 EXAMPLEEN=example-en
 
 PACKAGE=resumecls
-SOURCES=$(PACKAGE).ins $(PACKAGE).dtx
-CLSFILES=$(PACKAGE).cls
-BIBFILE=$(EXAMPLE).bib
 
 .PHONY: all cls doc example-zh example-en clean distclean
 
@@ -29,14 +26,14 @@ all: doc example-zh example-en
 
 cls: $(CLSFILES)
 
-$(CLSFILES): $(SOURCES)
+$(CLSFILES): $(PACKAGE).ins $(PACKAGE).dtx
 	latex $(PACKAGE).ins
 
 # doc
 
 doc: $(PACKAGE).pdf
 
-$(PACKAGE).pdf: $(CLSFILES)
+$(PACKAGE).pdf: $(PACKAGE).cls
 	xelatex $(PACKAGE).dtx
 	makeindex -s gind.ist -o $(PACKAGE).ind $(PACKAGE).idx
 	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
@@ -47,11 +44,11 @@ $(PACKAGE).pdf: $(CLSFILES)
 
 example-zh: $(EXAMPLEZH).pdf
 
-$(EXAMPLEZH).pdf: $(CLSFILES) $(EXAMPLEZH).bbl
+$(EXAMPLEZH).pdf: $(CLSFILES) $(EXAMPLEZH).tex $(EXAMPLEZH).bbl
 	xelatex $(EXAMPLEZH).tex
 	xelatex $(EXAMPLEZH).tex
 
-$(EXAMPLEZH).bbl: $(BIBFILE)
+$(EXAMPLEZH).bbl: $(EXAMPLE).bib
 	xelatex $(EXAMPLEZH).tex
 	-bibtex $(EXAMPLEZH)
 
@@ -59,11 +56,11 @@ $(EXAMPLEZH).bbl: $(BIBFILE)
 
 example-en: $(EXAMPLEEN).pdf
 
-$(EXAMPLEEN).pdf: $(CLSFILES) $(EXAMPLEEN).bbl
+$(EXAMPLEEN).pdf: $(CLSFILES) $(EXAMPLEEN).tex $(EXAMPLEEN).bbl
 	xelatex $(EXAMPLEEN).tex
 	xelatex $(EXAMPLEEN).tex
 
-$(EXAMPLEEN).bbl: $(BIBFILE)
+$(EXAMPLEEN).bbl: $(EXAMPLE).bib
 	xelatex $(EXAMPLEEN).tex
 	-bibtex $(EXAMPLEEN)
 

@@ -18,7 +18,7 @@ EXAMPLEEN=example-en
 
 PACKAGE=resumecls
 
-.PHONY: all cls doc example-zh example-en clean distclean
+.PHONY: all cls doc example-zh example-en resume-zh resume-en clean distclean
 
 all: doc example-zh example-en
 
@@ -63,6 +63,30 @@ $(EXAMPLEEN).pdf: $(CLSFILES) $(EXAMPLEEN).tex $(EXAMPLEEN).bbl
 $(EXAMPLEEN).bbl: $(EXAMPLE).bib
 	xelatex $(EXAMPLEEN).tex
 	-bibtex $(EXAMPLEEN)
+
+# resume-zh
+
+resume-zh: $(RESUMEZH).pdf
+
+$(RESUMEZH).pdf: $(CLSFILES) $(RESUMEZH).tex $(RESUMEZH).bbl
+	xelatex $(RESUMEZH).tex
+	xelatex $(RESUMEZH).tex
+
+$(RESUMEZH).bbl: $(EXAMPLE).bib
+	xelatex $(RESUMEZH).tex
+	-bibtex $(RESUMEZH)
+
+# resume-en
+
+resume-en: $(RESUMEEN).pdf
+
+$(RESUMEEN).pdf: $(CLSFILES) $(RESUMEEN).tex $(RESUMEEN).bbl
+	xelatex $(RESUMEEN).tex
+	xelatex $(RESUMEEN).tex
+
+$(RESUMEEN).bbl: $(EXAMPLE).bib
+	xelatex $(RESUMEEN).tex
+	-bibtex $(RESUMEEN)
 
 # dist & clean
 

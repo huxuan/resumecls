@@ -23,11 +23,50 @@
 % \iffalse
 %<cls>\NeedsTeXFormat{LaTeX2e}[2011/06/27]
 %<cls>\ProvidesClass{resumecls}
-%<cls> [ 2012/12/19 v0.1 Initial version with dtx ]
+%<cls>[2012/12/19 v0.1.2 Customization part in documentation]
 %
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[adobefonts]{ctex}
+
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\usepackage[xetex,unicode,colorlinks]{hyperref}
+
+\usepackage{listings}
+\lstset{
+    backgroundcolor=\color{white},
+    basicstyle=\zihao{5}\ttfamily,
+    columns=flexible,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    frame=single,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    stepnumber=1,
+    rulecolor=\color{black},
+    tabsize=2,
+    texcl=true,
+    title=\lstname,
+    escapeinside={\%*}{*)},
+    extendedchars=false,
+    mathescape=true,
+    xleftmargin=3em,
+    xrightmargin=3em,
+    numberstyle=\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    language={[LaTeX]TeX},
+    morekeywords={setmainfont,setCJKmainfont},
+}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -38,7 +77,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{136}
+% \CheckSum{135}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -57,6 +96,8 @@
 %   Right brace   \}     Tilde         \~}
 %
 % \changes{v0.1}{2012/12/19}{Initial version with dtx}
+% \changes{v0.1.1}{2012/12/19}{Minor bug fix}
+% \changes{v0.1.2}{2012/12/19}{Customization part in documentation}
 %
 % \GetFileInfo{\jobname.dtx}
 %
@@ -284,6 +325,51 @@
 %    \begin{macrocode}
 \renewcommand{\refname}{}
 %    \end{macrocode}
+%
+% \subsection{Customization}
+%
+% \subsubsection{Font settings}
+%
+% Cause we recommend use Xe\LaTeX{} to compile, so you can easily setting
+% the font to whatever you like only if it exists on you computer.
+% Just add something like following code before |\begin{document}|.
+%
+% \iffalse
+%<*lst>
+% \fi
+\begin{lstlisting}
+\setmainfont{Times New Roman}
+\setCJKmainfont{%*宋体*)}
+\end{lstlisting}
+% \iffalse
+%</lst>
+% \fi
+%
+% \subsubsection{Multiple pages}
+%
+% Currently, \resumecls doesn't support multiple pages very well. Before
+% showing the method for customization I want you relize that only one page
+% for resume is enough. \resumecls use |\begin{table}| and |\end{table}| to
+% enclose all contents so that the whole resume will be limited in one page.
+% But if you really want to have multiple pages, you can set multiple table
+% environments in your tex fhile and judge the place for new page yourself.
+% the code within document environment for two pages resume will looks like:
+%
+% \iffalse
+%<*lst>
+% \fi
+\begin{lstlisting}
+\begin{table}
+Contents for Page 1
+\end{table}
+\newpage
+\begin{table}
+Contents for Page 2
+\end{table}
+\end{lstlisting}
+% \iffalse
+%</lst>
+% \fi
 %
 % \Finale
 \endinput

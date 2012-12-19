@@ -71,7 +71,7 @@ to `example-en` or `example-zh` as you want.
 - if has bib
 ```shell
 xelatex example.tex
--bibtex example
+bibtex example
 ```
 
 - And then or if has no bib
@@ -88,7 +88,7 @@ corresponding to your own tex file.
 - if has bib
 ```shell
 xelatex resume.tex
--bibtex resume
+bibtex resume
 ```
 
 - And then or if has no bib

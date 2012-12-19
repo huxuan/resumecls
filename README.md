@@ -3,6 +3,10 @@
 A LaTeX cls for resume, simply, support English and Chinese natively.
 
 ## Makefile
+First you need `cp config-sample.mk config.mk` to make Makefile script work.
+You can change the variable in config.mk corresponding to your own tex file.
+For example, I have `huxuan-zh.tex`, `huxuan-en.tex` and `huxuan.bib`, so I
+Set `RESUME=huxuan`, `RESUMEZH=huxuan-zh`, `RESUMEEN=huxuan-en`.
 
 ### Get cls
 ```shell
@@ -23,6 +27,12 @@ make example-en
 ### Get all files above
 ```shell
 make all
+```
+
+### Get your own resume
+```shell
+make resume-zh
+make resume-en
 ```
 
 ### Clean
@@ -54,7 +64,9 @@ xelatex resumecls.dtx
 ```
 
 ### Get exmaple
-Replace `example` in code snippet to `example-en` or `example-zh` as you want.
+First, you need to get the cls file as described above.
+Then you also need to replace `example` in code snippet
+to `example-en` or `example-zh` as you want.
 
 - if has bib
 ```shell
@@ -66,4 +78,21 @@ xelatex example.tex
 ```shell
 xelatex example.tex
 xelatex example.tex
+```
+
+### Get your own resume
+First, you need to get the cls file as described above.
+Then you also need to replace `resume` in code snippet
+corresponding to your own tex file.
+
+- if has bib
+```shell
+xelatex resume.tex
+-bibtex resume
+```
+
+- And then or if has no bib
+```shell
+xelatex resume.tex
+xelatex resume.tex
 ```

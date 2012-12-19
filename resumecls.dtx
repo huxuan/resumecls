@@ -23,7 +23,7 @@
 % \iffalse
 %<cls>\NeedsTeXFormat{LaTeX2e}[2011/06/27]
 %<cls>\ProvidesClass{resumecls}
-%<cls>[2012/12/19 v0.1.2 Customization part in documentation]
+%<cls>[2012/12/19 v0.1.3 Add reference settings]
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -77,7 +77,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{135}
+% \CheckSum{139}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -98,6 +98,7 @@
 % \changes{v0.1}{2012/12/19}{Initial version with dtx}
 % \changes{v0.1.1}{2012/12/19}{Minor bug fix}
 % \changes{v0.1.2}{2012/12/19}{Customization part in documentation}
+% \changes{v0.1.3}{2012/12/19}{Add reference settings}
 %
 % \GetFileInfo{\jobname.dtx}
 %
@@ -214,6 +215,14 @@
 \else
     \hypersetup{hidelinks}
 \fi
+%    \end{macrocode}
+%
+% \subsection{Reference Settings}
+%
+%    \begin{macrocode}
+\RequirePackage[sort&compress]{natbib}
+\bibliographystyle{unsrt}
+\setlength{\bibsep}{0pt}
 %    \end{macrocode}
 %
 % \subsection{Content Variable}

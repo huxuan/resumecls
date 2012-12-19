@@ -24,9 +24,9 @@ all: doc example-zh example-en
 
 # cls
 
-cls: $(CLSFILES)
+cls: $(PACKAGE).cls
 
-$(CLSFILES): $(PACKAGE).ins $(PACKAGE).dtx
+$(PACKAGE).cls: $(PACKAGE).ins $(PACKAGE).dtx
 	latex $(PACKAGE).ins
 
 # doc
@@ -44,7 +44,7 @@ $(PACKAGE).pdf: $(PACKAGE).cls
 
 example-zh: $(EXAMPLEZH).pdf
 
-$(EXAMPLEZH).pdf: $(CLSFILES) $(EXAMPLEZH).tex $(EXAMPLEZH).bbl
+$(EXAMPLEZH).pdf: $(PACKAGE).cls $(EXAMPLEZH).tex $(EXAMPLEZH).bbl
 	xelatex $(EXAMPLEZH).tex
 	xelatex $(EXAMPLEZH).tex
 
@@ -56,7 +56,7 @@ $(EXAMPLEZH).bbl: $(EXAMPLE).bib
 
 example-en: $(EXAMPLEEN).pdf
 
-$(EXAMPLEEN).pdf: $(CLSFILES) $(EXAMPLEEN).tex $(EXAMPLEEN).bbl
+$(EXAMPLEEN).pdf: $(PACKAGE).cls $(EXAMPLEEN).tex $(EXAMPLEEN).bbl
 	xelatex $(EXAMPLEEN).tex
 	xelatex $(EXAMPLEEN).tex
 
@@ -68,7 +68,7 @@ $(EXAMPLEEN).bbl: $(EXAMPLE).bib
 
 resume-zh: $(RESUMEZH).pdf
 
-$(RESUMEZH).pdf: $(CLSFILES) $(RESUMEZH).tex $(RESUMEZH).bbl
+$(RESUMEZH).pdf: $(PACKAGE).cls $(RESUMEZH).tex $(RESUMEZH).bbl
 	xelatex $(RESUMEZH).tex
 	xelatex $(RESUMEZH).tex
 
@@ -80,7 +80,7 @@ $(RESUMEZH).bbl: $(EXAMPLE).bib
 
 resume-en: $(RESUMEEN).pdf
 
-$(RESUMEEN).pdf: $(CLSFILES) $(RESUMEEN).tex $(RESUMEEN).bbl
+$(RESUMEEN).pdf: $(PACKAGE).cls $(RESUMEEN).tex $(RESUMEEN).bbl
 	xelatex $(RESUMEEN).tex
 	xelatex $(RESUMEEN).tex
 

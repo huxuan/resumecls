@@ -1,0 +1,97 @@
+% !Mode:: "TeX:UTF-8"
+% +-----------------------------------------------------------------------------
+% | File: example-zh
+% | Author: huxuan
+% | E-mail: i(at)huxuan.org
+% | Created: 2012/12/18
+% | Last modified: 2012/12/18
+% | Description:
+% |     A English Resume Example in LaTeX based on resumecls
+% |
+% | Copyrgiht (c) 2012 by huxuan. All rights reserved.
+% | License GPLv3
+% +-----------------------------------------------------------------------------
+
+\documentclass[en]{resumecls}
+
+\name{Name}
+\organization{unit, school or organization}
+\address{address, zip code}
+\mobile{+1 XXX XXXX XXXX}
+\mail{i@example.com}
+\homepage{http://example.com}
+\resumeurl{http://example.com/resume-en.pdf}
+
+\begin{document}
+
+\begin{table}[!h]
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\heading{Education}
+\entry{2em}{Xrp{8em}}{
+    \heiti{School} & City & Time Period \\
+}
+\entry{4em}{lXX}{
+    Degree & College of XXX & Major in XX \\
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\heading{Research Experience}
+\entry{2em}{Xp{8em}}{
+    \heiti{Insitute} & Time Period \\
+}
+\entry{4em}{X}{Lab \quad Position}
+\entry{6em}{X}{
+    Research Fields and Specific Content \\
+    Publication (You can also use bibtex, like \cite{label}, see end of doc） \\
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\heading{Working Experience}
+\entry{2em}{Xp{8em}}{
+    \heiti{Unit} & Time Period \\
+}
+\entry{4em}{X}{Department \quad Position}
+\entry{6em}{X}{
+    Specific Issues Responsible for \\
+    Specific Content of Your Work \\
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\heading{School Experience}
+\entry{2em}{Xp{8em}}{
+    Experience 1 & Time Period \\
+    Experience 2 & Time Period \\
+}
+
+\heading{Awards}
+\entry{2em}{Xr}{
+    Award 1 & Time \\
+    Award 2 & Time \\
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\heading{Professional Skill}
+\entry{2em}{lX}{
+    Proficient in  & XXX \\
+    Experienced in & XXX \\
+    Familiar with  & XXX \\
+    Use            & XXX \\
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\heading{Other listings, such as hobby, network profile and so on}
+\entry{2em}{lX}{
+    Label 1 & Content 1 \\
+    Label 2 & Content 2 \\
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\heading{Appendix: Publications}
+\vspace{-6em}
+\bibliographystyle{unsrt}
+\bibliography{example}
+\end{table}
+\end{document}

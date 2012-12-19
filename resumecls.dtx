@@ -1,0 +1,290 @@
+% \iffalse meta-comment
+%
+% resumecls.dtx
+% Copyright 2012 by huxuan <i@huxuan.org>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is huxuan <i@huxuan.org>.
+%
+% This work consists of the files resumecls.dtx and resumecls.ins
+% and the derived file resumecls.cls.
+%
+% \fi
+
+% \iffalse
+%<cls>\NeedsTeXFormat{LaTeX2e}[2011/06/27]
+%<cls>\ProvidesClass{resumecls}
+%<cls> [ 2012/12/19 v0.1 Initial version with dtx ]
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[adobefonts]{ctex}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+%\OnlyDescription
+\begin{document}
+    \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v0.1}{2012/12/19}{Initial version with dtx}
+%
+% \GetFileInfo{\jobname.dtx}
+%
+% \DoNotIndex{\\,\begin,\colorbox,\CTEXoptions,\CurrentOptionn,\def}
+% \DoNotIndex{\definecolor,\else,\end,\fancyfoot,\fancyhf,\fi,\footnotesize}
+% \DoNotIndex{\footrulewidth,\headrulewidth,\heiti,\href,\hspace,\hypersetup}
+% \DoNotIndex{\ifrcls@color,\ifrcls@en,\ifrcls@zh,\LoadClass,\maketitle}
+% \DoNotIndex{\newcommand,\newif,\pagestyle,\parbox,\PassOptionsToClass}
+% \DoNotIndex{\ProcessOptions,\refname,\relax,\renewcommand,\RequirePackage}
+% \DoNotIndex{\textwidth,\today,\url,\zihao}
+% \DoNotIndex{}
+%
+% \def\resumecls{\textsf{resumecls}\ }
+%
+% \title{The \resumecls package\thanks{This document
+% corresponds to \resumecls~\fileversion,
+% dated~\filedate.}}
+% \author{huxuan \\ \texttt{i@huxuan.org}}
+%
+% \maketitle
+%
+% \begin{abstract}
+% \resumecls is a latex cls to create a resume or cv more easily.
+% Especially it supports Chinese as well as English at the same time.
+% \end{abstract}
+%
+% \section{Introduction}
+%
+% There do exist many resume cls files already. But from my experience,
+% most of them are too complicated or lack of flexibility.
+%
+% \resumecls make all contents consists of heading/entry based on tabularx.
+% You can easily design the style and many recommended ones are also listed
+% in example files.
+%
+% What's more, \resumecls already has ctex package imported which make it
+% support Chinese natively. The example-zh.tex and example-en.tex is almost
+% the same (in \LaTeX{} Code, not the content). You need no more work
+% to make your resume both in English and Chinese.
+%
+% \section{Usage}
+%
+% \DescribeMacro{\heading}
+% The heading part for each section.
+%
+% \DescribeMacro{\entry}
+% All contents except for heading.
+%
+% \DescribeMacro{\name}
+% Your Name.
+%
+% \DescribeMacro{\organization}
+% Your unit, shcool or organization.
+%
+% \DescribeMacro{\address}
+% Your address and zip code.
+%
+% \DescribeMacro{\mobile}
+% Your phone number.
+%
+% \DescribeMacro{\mail}
+% Your mail address.
+%
+% \DescribeMacro{\homepage}
+% Your homepage.
+%
+% \DescribeMacro{\resumeurl}
+% The url for the resume.
+% It will locate at the right of footer.
+% If you don't want it, just leave it blank.
+%
+% \StopEventually{\PrintChanges\PrintIndex}
+%
+% \section{Implementation}
+%
+% \subsection{Options}
+%    \begin{macrocode}
+\newif\ifrcls@zh\rcls@zhtrue
+\newif\ifrcls@en\rcls@enfalse
+\newif\ifrcls@color\rcls@colorfalse
+\DeclareOption{zh}{\rcls@zhtrue\rcls@enfalse}
+\DeclareOption{en}{\rcls@entrue\rcls@zhfalse}
+\DeclareOption{color}{\rcls@colortrue}
+%    \end{macrocode}
+%
+% \subsection{Import article class}
+%    \begin{macrocode}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+\LoadClass[a4paper,12pt]{article}
+%    \end{macrocode}
+%
+% \subsection{Import packages}
+%    \begin{macrocode}
+\RequirePackage[top=.5in,bottom=.5in,left=.5in,right=.5in]{geometry}
+\RequirePackage[xetex,unicode]{hyperref}
+\RequirePackage[noindent,adobefonts]{ctex}
+\RequirePackage{times}
+\RequirePackage{tabularx}
+\RequirePackage{color}
+\RequirePackage{fancyhdr}
+%    \end{macrocode}
+%
+% \subsection{Color Settings}
+%
+% \subsubsection{Background color for heading}
+%    \begin{macrocode}
+\definecolor{heading}{gray}{0.85}
+%    \end{macrocode}
+%
+% \subsubsection{Color for hyperlink}
+%    \begin{macrocode}
+\ifrcls@color
+    \hypersetup{colorlinks}
+\else
+    \hypersetup{hidelinks}
+\fi
+%    \end{macrocode}
+%
+% \subsection{Content Variable}
+%
+% \begin{macro}{\name}
+%    \begin{macrocode}
+\def\rcls@name{}
+\newcommand\name[1]{\def\rcls@name{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\organization}
+%    \begin{macrocode}
+\def\rcls@organization{}
+\newcommand\organization[1]{\def\rcls@organization{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\address}
+%    \begin{macrocode}
+\def\rcls@address{}
+\newcommand\address[1]{\def\rcls@address{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\mobile}
+%    \begin{macrocode}
+\def\rcls@mobile{}
+\newcommand\mobile[1]{\def\rcls@mobile{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\mail}
+%    \begin{macrocode}
+\def\rcls@mail{}
+\newcommand\mail[1]{\def\rcls@mail{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\homepage}
+%    \begin{macrocode}
+\def\rcls@homepage{}
+\newcommand\homepage[1]{\def\rcls@homepage{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\resumeurl}
+%    \begin{macrocode}
+\def\rcls@resumeurl{}
+\newcommand\resumeurl[1]{\def\rcls@resumeurl{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Custom commands}
+%
+% \begin{macro}{\heading}
+%    \begin{macrocode}
+\newcommand{\heading}[1]{
+    \colorbox{heading}{
+        \parbox{.96\textwidth}{
+            \heiti{\zihao{4}#1}
+        }
+    } \\
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\entry}
+%    \begin{macrocode}
+\newcommand{\entry}[3]{
+    \begin{tabularx}{\textwidth}{@{\hspace{#1}}#2}
+        #3
+    \end{tabularx}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Style settings}
+%
+% \subsubsection{Redefine maketitle}
+%    \begin{macrocode}
+\renewcommand{\maketitle}{
+    \entry{0em}{Xr}{
+        \heiti{\zihao{4}{\rcls@name}} & \rcls@mobile \\
+        \rcls@organization            & \href{mailto:\rcls@mail}{\rcls@mail} \\
+        \rcls@address                 & \url{\rcls@homepage} \\
+    }
+}
+%    \end{macrocode}
+%
+% \subsubsection{Header and footer settings}
+%    \begin{macrocode}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\ifrcls@zh
+    \CTEXoptions[today=small]
+    \fancyfoot[L]{\footnotesize 最后更新：\today}
+\else
+    \CTEXoptions[today=old]
+    \fancyfoot[L]{\footnotesize Last Modified: \today}
+\fi
+\fancyfoot[R]{\footnotesize \url{\rcls@resumeurl}}
+%    \end{macrocode}
+%
+% \subsubsection{Empty refname}
+%
+%    \begin{macrocode}
+\renewcommand{\refname}{}
+%    \end{macrocode}
+%
+% \Finale
+\endinput

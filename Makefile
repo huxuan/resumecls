@@ -81,7 +81,7 @@ $(RESUMEZH).pdf: $(PACKAGE).cls $(RESUMEZH).tex $(RESUMEZH).bbl
 	xelatex $(RESUMEZH).tex
 	xelatex $(RESUMEZH).tex
 
-$(RESUMEZH).bbl: $(EXAMPLE).bib
+$(RESUMEZH).bbl: $(RESUME).bib
 	xelatex $(RESUMEZH).tex
 	-bibtex $(RESUMEZH)
 
@@ -93,7 +93,7 @@ $(RESUMEEN).pdf: $(PACKAGE).cls $(RESUMEEN).tex $(RESUMEEN).bbl
 	xelatex $(RESUMEEN).tex
 	xelatex $(RESUMEEN).tex
 
-$(RESUMEEN).bbl: $(EXAMPLE).bib
+$(RESUMEEN).bbl: $(RESUME).bib
 	xelatex $(RESUMEEN).tex
 	-bibtex $(RESUMEEN)
 

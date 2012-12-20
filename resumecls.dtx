@@ -23,7 +23,7 @@
 % \iffalse
 %<cls>\NeedsTeXFormat{LaTeX2e}[2011/06/27]
 %<cls>\ProvidesClass{resumecls}
-%<cls>[2012/12/19 v0.1.3 Add reference settings]
+%<cls>[2012/12/20 v0.1.4 Use bfseries for better English support]
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -99,6 +99,7 @@
 % \changes{v0.1.1}{2012/12/19}{Minor bug fix}
 % \changes{v0.1.2}{2012/12/19}{Customization part in documentation}
 % \changes{v0.1.3}{2012/12/19}{Add reference settings}
+% \changes{v0.1.4}{2012/12/20}{Use bfseries for better English support}
 %
 % \GetFileInfo{\jobname.dtx}
 %
@@ -283,7 +284,7 @@
 \newcommand{\heading}[1]{
     \colorbox{heading}{
         \parbox{.96\textwidth}{
-            \heiti{\zihao{4}#1}
+            \bfseries\zihao{4}#1
         }
     } \\
 }
@@ -306,7 +307,7 @@
 %    \begin{macrocode}
 \renewcommand{\maketitle}{
     \entry{0em}{Xr}{
-        \heiti{\zihao{4}{\rcls@name}} & \rcls@mobile \\
+        \bfseries\zihao{4}\rcls@name  & \rcls@mobile \\
         \rcls@organization            & \href{mailto:\rcls@mail}{\rcls@mail} \\
         \rcls@address                 & \url{\rcls@homepage} \\
     }

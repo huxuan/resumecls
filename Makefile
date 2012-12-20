@@ -18,7 +18,8 @@ EXAMPLEEN=example-en
 
 PACKAGE=resumecls
 
-.PHONY: all cls doc example-zh example-en resume-zh resume-en clean distclean
+.PHONY: all cls doc example example-zh example-en resume resume-zh resume-en
+.PHONY: clean distclean
 
 all: doc example-zh example-en
 
@@ -39,6 +40,10 @@ $(PACKAGE).pdf: $(PACKAGE).cls
 	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
 	xelatex $(PACKAGE).dtx
 	xelatex $(PACKAGE).dtx
+
+# example
+
+example: example-zh example-en
 
 # example-zh
 
@@ -63,6 +68,10 @@ $(EXAMPLEEN).pdf: $(PACKAGE).cls $(EXAMPLEEN).tex $(EXAMPLEEN).bbl
 $(EXAMPLEEN).bbl: $(EXAMPLE).bib
 	xelatex $(EXAMPLEEN).tex
 	-bibtex $(EXAMPLEEN)
+
+# resume
+
+resume: resume-zh resume-en
 
 # resume-zh
 

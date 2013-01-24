@@ -53,7 +53,7 @@ $(EXAMPLEZH).pdf: $(PACKAGE).cls $(EXAMPLEZH).tex $(EXAMPLEZH).bbl
 	xelatex $(EXAMPLEZH).tex
 	xelatex $(EXAMPLEZH).tex
 
-$(EXAMPLEZH).bbl: $(EXAMPLE).bib
+$(EXAMPLEZH).bbl:
 	xelatex $(EXAMPLEZH).tex
 	-bibtex $(EXAMPLEZH)
 
@@ -65,7 +65,7 @@ $(EXAMPLEEN).pdf: $(PACKAGE).cls $(EXAMPLEEN).tex $(EXAMPLEEN).bbl
 	xelatex $(EXAMPLEEN).tex
 	xelatex $(EXAMPLEEN).tex
 
-$(EXAMPLEEN).bbl: $(EXAMPLE).bib
+$(EXAMPLEEN).bbl:
 	xelatex $(EXAMPLEEN).tex
 	-bibtex $(EXAMPLEEN)
 
@@ -81,7 +81,7 @@ $(RESUMEZH).pdf: $(PACKAGE).cls $(RESUMEZH).tex $(RESUMEZH).bbl
 	xelatex $(RESUMEZH).tex
 	xelatex $(RESUMEZH).tex
 
-$(RESUMEZH).bbl: $(RESUME).bib
+$(RESUMEZH).bbl:
 	xelatex $(RESUMEZH).tex
 	-bibtex $(RESUMEZH)
 
@@ -93,7 +93,7 @@ $(RESUMEEN).pdf: $(PACKAGE).cls $(RESUMEEN).tex $(RESUMEEN).bbl
 	xelatex $(RESUMEEN).tex
 	xelatex $(RESUMEEN).tex
 
-$(RESUMEEN).bbl: $(RESUME).bib
+$(RESUMEEN).bbl:
 	xelatex $(RESUMEEN).tex
 	-bibtex $(RESUMEEN)
 

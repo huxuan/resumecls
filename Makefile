@@ -117,5 +117,4 @@ clean:
 distclean: clean
 	-@rm -f \
 		*.cls \
-		*.pdf \
-		config.mk
+		*.pdf

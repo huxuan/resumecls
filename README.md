@@ -13,7 +13,7 @@ cp example-zh.tex resume-zh.tex
 cp example-en.tex resume-en.tex
 cp example.bib resume.bib
 # Edit resume-zh.tex resume-en.tex and resume.bib
-# Compile in the way listed in following section
+# Compile via the way (Makefile or LaTeX) listed in the following section
 ```
 ## Compile
 

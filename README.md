@@ -7,6 +7,7 @@ A LaTeX cls for resume, simply, support English and Chinese natively.
 ```shell
 git clone https://github.com/huxuan/resumecls.git
 cd resumecls
+# Copy sample/example files
 cp config-sample.mk config.mk
 cp example-zh.tex resume-zh.tex
 cp example-en.tex resume-en.tex

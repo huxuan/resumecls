@@ -33,6 +33,4 @@
 
 # Custom
 *.swp
-*.pdf
 *.cls
-config.mk

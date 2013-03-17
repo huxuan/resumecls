@@ -3,25 +3,18 @@
 # | Author: huxuan
 # | E-mail: i(at)huxuan.org
 # | Created: 2012-12-18
-# | Last modified: 2012-12-19
+# | Last modified: 2013-03-17
 # | Description:
 # |     Makefile for resumecls
 # |
-# | Copyrgiht (c) 2012 by huxuan. All rights reserved.
-# | License GPLv3
+# | Copyrgiht (c) 2012-2013 by huxuan. All rights reserved.
 # +-----------------------------------------------------------------------------
-
-include config.mk
-EXAMPLE=example
-EXAMPLEZH=example-zh
-EXAMPLEEN=example-en
 
 PACKAGE=resumecls
 
-.PHONY: all cls doc example example-zh example-en resume resume-zh resume-en
-.PHONY: clean distclean
+.PHONY: all cls doc clean distclean
 
-all: doc example-zh example-en
+all: doc
 
 # cls
 
@@ -41,63 +34,7 @@ $(PACKAGE).pdf: $(PACKAGE).cls
 	xelatex $(PACKAGE).dtx
 	xelatex $(PACKAGE).dtx
 
-# example
-
-example: example-zh example-en
-
-# example-zh
-
-example-zh: $(EXAMPLEZH).pdf
-
-$(EXAMPLEZH).pdf: $(PACKAGE).cls $(EXAMPLEZH).tex $(EXAMPLEZH).bbl
-	xelatex $(EXAMPLEZH).tex
-	xelatex $(EXAMPLEZH).tex
-
-$(EXAMPLEZH).bbl:
-	xelatex $(EXAMPLEZH).tex
-	-bibtex $(EXAMPLEZH)
-
-# example-en
-
-example-en: $(EXAMPLEEN).pdf
-
-$(EXAMPLEEN).pdf: $(PACKAGE).cls $(EXAMPLEEN).tex $(EXAMPLEEN).bbl
-	xelatex $(EXAMPLEEN).tex
-	xelatex $(EXAMPLEEN).tex
-
-$(EXAMPLEEN).bbl:
-	xelatex $(EXAMPLEEN).tex
-	-bibtex $(EXAMPLEEN)
-
-# resume
-
-resume: resume-zh resume-en
-
-# resume-zh
-
-resume-zh: $(RESUMEZH).pdf
-
-$(RESUMEZH).pdf: $(PACKAGE).cls $(RESUMEZH).tex $(RESUMEZH).bbl
-	xelatex $(RESUMEZH).tex
-	xelatex $(RESUMEZH).tex
-
-$(RESUMEZH).bbl:
-	xelatex $(RESUMEZH).tex
-	-bibtex $(RESUMEZH)
-
-# resume-en
-
-resume-en: $(RESUMEEN).pdf
-
-$(RESUMEEN).pdf: $(PACKAGE).cls $(RESUMEEN).tex $(RESUMEEN).bbl
-	xelatex $(RESUMEEN).tex
-	xelatex $(RESUMEEN).tex
-
-$(RESUMEEN).bbl:
-	xelatex $(RESUMEEN).tex
-	-bibtex $(RESUMEEN)
-
-# dist & clean
+# clean & distclean
 
 clean:
 	-@rm -f \

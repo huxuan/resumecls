@@ -53,5 +53,4 @@ clean:
 
 distclean: clean
 	-@rm -f \
-		*.cls \
-		*.pdf
+		*.cls

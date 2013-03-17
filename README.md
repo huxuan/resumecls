@@ -1,4 +1,4 @@
-# resumecls
+# resumecls / [CTAN mirror](http://www.ctan.org/pkg/resumecls)
 
 A LaTeX cls to typeset resume both in English and Chinese
 

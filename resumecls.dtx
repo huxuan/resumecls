@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
 % resumecls.dtx
-% Copyright 2012-2013 by huxuan <i@huxuan.org>
+% Copyright (C) 2012-2013 by huxuan <i@huxuan.org>
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -21,9 +21,14 @@
 % \fi
 
 % \iffalse
-%<cls>\NeedsTeXFormat{LaTeX2e}[2011/06/27]
-%<cls>\ProvidesClass{resumecls}
-%<cls>[2013/03/07 v0.2 First try to upload to CTAN]
+%<*driver>
+\ProvidesFile{\jobname.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[2011/06/27]
+%<class>\ProvidesClass{resumecls}
+%<*class>
+    [2013/03/17 v0.2.1 Celebrate for being included in CTAN]
+%</class>
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -102,6 +107,7 @@
 % \changes{v0.1.3}{2012/12/19}{Add reference settings}
 % \changes{v0.1.4}{2012/12/20}{Use bfseries for better English support}
 % \changes{v0.2}{2013/03/07}{First try to upload to CTAN}
+% \changes{v0.2.1}{2013/03/17}{Celebrate for being included in CTAN}
 %
 % \GetFileInfo{\jobname.dtx}
 %
@@ -120,6 +126,7 @@
 % corresponds to \resumecls~\fileversion,
 % dated~\filedate.}}
 % \author{huxuan \\ \texttt{i@huxuan.org}}
+% \date{\filedate}
 %
 % \maketitle
 %

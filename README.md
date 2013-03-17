@@ -1,28 +1,18 @@
 # resumecls
 
-A LaTeX cls for resume, simply, support English and Chinese natively.
+A LaTeX cls to typeset resume both in English and Chinese
 
-## Workflow
+# Usage / How to get it
 
-```shell
-git clone https://github.com/huxuan/resumecls.git
-cd resumecls
-# Copy sample/example files
-cp config-sample.mk config.mk
-cp example-zh.tex resume-zh.tex
-cp example-en.tex resume-en.tex
-cp example.bib resume.bib
-# Edit resume-zh.tex resume-en.tex and resume.bib
-# Compile via the way (Makefile or LaTeX) listed in the following section
-```
-## Compile
+- [`resumecls`](http://www.ctan.org/pkg/resumecls) has already been included in [CTAN](http://www.ctan.org/) Mirror.
+- To get the cls file you only need to update local CTAN Packages.
+- For how to use it you can refer to [`resumecls-example`](https://github.com/huxuan/resumecls-example) repo.
 
-### Compile via Makefile (Recommended if your os support)
-First you need `cp config-sample.mk config.mk` to make Makefile script work.
-You can change the variable in `config.mk` corresponding to the your file name.
-Default and recommended value is `RESUME=resume`, `RESUMEZH=resume-zh`,
-`RESUMEEN=resume-en` which means you need to name your files as
-`resume-zh.tex`, `resume-en.tex` and `resume.bib` to make `make` work.
+## Mnaual Compile
+
+To get the cls file and document manually, you can make it either by Makefile or LaTeX command
+
+### Compile by Makefile (Recommended if your os supported)
 
 #### Get resumecls.cls
 ```shell
@@ -32,25 +22,6 @@ make cls
 #### Get resumecls.pdf
 ```shell
 make doc
-```
-
-#### Get example-zh.pdf & example-en.pdf
-```shell
-make example # Get both below
-make example-zh
-make example-en
-```
-
-#### Get all files above
-```shell
-make all
-```
-
-#### Get resume-zh.pdf & resume-en.pdf
-```shell
-make resume # Get both below
-make resume-zh
-make resume-en
 ```
 
 #### Clean
@@ -65,7 +36,7 @@ Clean all generated files
 make distclean
 ```
 
-### Compile by raw LaTeX command
+### Compile by LaTeX command
 
 #### Get resumecls.cls
 ```shell
@@ -79,38 +50,4 @@ makeindex -s gind.ist -o resumecls.ind resumecls.idx
 makeindex -s gglo.ist -o resumecls.gls resumecls.glo
 xelatex resumecls.dtx
 xelatex resumecls.dtx
-```
-
-#### Get example-zh.pdf & example-en.pdf
-First, you need to get the cls file as described above.
-Then you also need to replace `example` in code snippet
-to `example-en` or `example-zh` as you want.
-
-- if has bib
-```shell
-xelatex example.tex
-bibtex example
-```
-
-- And then or if has no bib
-```shell
-xelatex example.tex
-xelatex example.tex
-```
-
-#### Get resume-zh.pdf & resume-en.pdf
-First, you need to get the cls file as described above.
-Then you also need to replace `resume` in code snippet
-corresponding to your own tex file.
-
-- if has bib
-```shell
-xelatex resume.tex
-bibtex resume
-```
-
-- And then or if has no bib
-```shell
-xelatex resume.tex
-xelatex resume.tex
 ```

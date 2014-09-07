@@ -8,7 +8,7 @@ A LaTeX cls to typeset resume both in English and Chinese
 - To get the cls file you only need to update local CTAN Packages.
 - For how to use it you can refer to [`resumecls-example`](https://github.com/huxuan/resumecls-example) repo.
 
-## Mnaual Compile
+## Manual Compile
 
 To get the cls file and document manually, you can make it either by Makefile or LaTeX command
 

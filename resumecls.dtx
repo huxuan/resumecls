@@ -33,7 +33,6 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[adobefonts]{ctex}
-\CTEXoptions[today=old]
 
 \usepackage{color}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -83,7 +82,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{139}
+% \CheckSum{124}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -108,22 +107,26 @@
 % \changes{v0.1.4}{2012/12/20}{Use bfseries for better English support}
 % \changes{v0.2}{2013/03/07}{First try to upload to CTAN}
 % \changes{v0.2.1}{2013/03/17}{Celebrate for being included in CTAN}
+% \changes{v0.3}{2013/06/17}{Long time no see, resumecls}
 %
 % \GetFileInfo{\jobname.dtx}
 %
-% \DoNotIndex{\\,\begin,\colorbox,\CTEXoptions,\CurrentOptionn,\def}
-% \DoNotIndex{\definecolor,\else,\end,\fancyfoot,\fancyhf,\fi,\footnotesize}
-% \DoNotIndex{\footrulewidth,\headrulewidth,\heiti,\href,\hspace,\hypersetup}
-% \DoNotIndex{\ifrcls@color,\ifrcls@en,\ifrcls@zh,\LoadClass,\maketitle}
-% \DoNotIndex{\newcommand,\newif,\pagestyle,\parbox,\PassOptionsToClass}
-% \DoNotIndex{\ProcessOptions,\refname,\relax,\renewcommand,\RequirePackage}
-% \DoNotIndex{\textwidth,\today,\url,\zihao}
+% \DoNotIndex{\\,\begin,\bfseries,\bibliographystyle,\bibsep,\colorbox}
+% \DoNotIndex{\CurrentOption,\DeclareOption,\def,\definecolor,\else,\end}
+% \DoNotIndex{\fancyfoot,\fancyhf,\fi,\footnotesize,\footrulewidth}
+% \DoNotIndex{\headrulewidth,\heiti,\href,\hspace,\hypersetup,\ifrclscolor}
+% \DoNotIndex{\LoadClass,\maketitle,\newcommand,\newif,\pagestyle,\parbox}
+% \DoNotIndex{\PassOptionsToClass,\ProcessOptions,\rclsaddress,\rclscolorfalse}
+% \DoNotIndex{\rclscolortrue,\rclshomepage,\rclsleftfooter,\rclsmail}
+% \DoNotIndex{\rclsmobile,\rclsname,\rclsorganization,\rclsrightfooter}
+% \DoNotIndex{\rightfooter,\refname,\relax,\renewcommand,\RequirePackage}
+% \DoNotIndex{\setlength,\textwidth,\url,\zihao}
 % \DoNotIndex{}
 %
 % \def\resumecls{\textsf{resumecls}\ }
 %
 % \title{The \resumecls package\thanks{This document
-% corresponds to \resumecls~\fileversion,
+% corresponds to \resumecls\fileversion,
 % dated~\filedate.}}
 % \author{huxuan \\ \texttt{i@huxuan.org}}
 % \date{\filedate}
@@ -131,22 +134,22 @@
 % \maketitle
 %
 % \begin{abstract}
-% \resumecls is a latex cls to create a resume or cv more easily.
-% Especially it supports Chinese as well as English at the same time.
+% \resumecls is a \LaTeX cls making typeseting a resume or cv in both English
+% and Chinese more easily.
 % \end{abstract}
 %
 % \section{Introduction}
 %
-% There do exist many resume cls files already. But from my experience,
-% most of them are too complicated or lack of flexibility.
+% There do exist many resume cls already. But from my experience, most of them
+% are too complicated or lack of flexibility.
 %
 % \resumecls make all contents consists of heading/entry based on tabularx.
 % You can easily design the style and many recommended ones are also listed
 % in example files.
 %
-% What's more, \resumecls already has ctex package imported which make it
+% What's more, \resumecls already has ctex package imported which means it
 % support Chinese natively. The example-zh.tex and example-en.tex is almost
-% the same (in \LaTeX{} Code, not the content). You need no more work
+% the same (in \LaTeX{} code, not the content). You need no more work
 % to make your resume both in English and Chinese.
 %
 % \section{Usage}
@@ -175,10 +178,11 @@
 % \DescribeMacro{\homepage}
 % Your homepage.
 %
-% \DescribeMacro{\resumeurl}
-% The url for the resume.
-% It will locate at the right of footer.
-% If you don't want it, just leave it blank.
+% \DescribeMacro{\leftfooter}
+% The content you want to put at left footer. Feel free to leave it blank.
+%
+% \DescribeMacro{\rightrfooter}
+% The content you want to put at right footer. Feel free to leave it blank.
 %
 % \StopEventually{\PrintChanges\PrintIndex}
 %
@@ -186,12 +190,8 @@
 %
 % \subsection{Options}
 %    \begin{macrocode}
-\newif\ifrcls@zh\rcls@zhtrue
-\newif\ifrcls@en\rcls@enfalse
-\newif\ifrcls@color\rcls@colorfalse
-\DeclareOption{zh}{\rcls@zhtrue\rcls@enfalse}
-\DeclareOption{en}{\rcls@entrue\rcls@zhfalse}
-\DeclareOption{color}{\rcls@colortrue}
+\newif\ifrclscolor\rclscolorfalse
+\DeclareOption{color}{\rclscolortrue}
 %    \end{macrocode}
 %
 % \subsection{Import article class}
@@ -220,7 +220,7 @@
 %
 % \subsubsection{Color for hyperlink}
 %    \begin{macrocode}
-\ifrcls@color
+\ifrclscolor
     \hypersetup{colorlinks}
 \else
     \hypersetup{hidelinks}
@@ -239,50 +239,57 @@
 %
 % \begin{macro}{\name}
 %    \begin{macrocode}
-\def\rcls@name{}
-\newcommand\name[1]{\def\rcls@name{#1}}
+\def\rclsname{}
+\newcommand\name[1]{\def\rclsname{#1}}
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\organization}
 %    \begin{macrocode}
-\def\rcls@organization{}
-\newcommand\organization[1]{\def\rcls@organization{#1}}
+\def\rclsorganization{}
+\newcommand\organization[1]{\def\rclsorganization{#1}}
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\address}
 %    \begin{macrocode}
-\def\rcls@address{}
-\newcommand\address[1]{\def\rcls@address{#1}}
+\def\rclsaddress{}
+\newcommand\address[1]{\def\rclsaddress{#1}}
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\mobile}
 %    \begin{macrocode}
-\def\rcls@mobile{}
-\newcommand\mobile[1]{\def\rcls@mobile{#1}}
+\def\rclsmobile{}
+\newcommand\mobile[1]{\def\rclsmobile{#1}}
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\mail}
 %    \begin{macrocode}
-\def\rcls@mail{}
-\newcommand\mail[1]{\def\rcls@mail{#1}}
+\def\rclsmail{}
+\newcommand\mail[1]{\def\rclsmail{#1}}
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\homepage}
 %    \begin{macrocode}
-\def\rcls@homepage{}
-\newcommand\homepage[1]{\def\rcls@homepage{#1}}
+\def\rclshomepage{}
+\newcommand\homepage[1]{\def\rclshomepage{#1}}
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\resumeurl}
+% \begin{macro}{\leftfooter}
 %    \begin{macrocode}
-\def\rcls@resumeurl{}
-\newcommand\resumeurl[1]{\def\rcls@resumeurl{#1}}
+\def\rclsleftfooter{}
+\newcommand\leftfooter[1]{\def\rclsleftfooter{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\rightfooter}
+%    \begin{macrocode}
+\def\rclsrightfooter{}
+\newcommand\rightfooter[1]{\def\rclsrightfooter{#1}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -290,9 +297,9 @@
 %
 % \begin{macro}{\heading}
 %    \begin{macrocode}
-\newcommand{\heading}[1]{
-    \colorbox{heading}{
-        \parbox{.98\textwidth}{
+\newcommand{\heading}[1]{%
+    \colorbox{heading}{%
+        \parbox{.98\textwidth}{%
             \bfseries\zihao{4}#1
         }
     } \\
@@ -302,7 +309,7 @@
 %
 % \begin{macro}{\entry}
 %    \begin{macrocode}
-\newcommand{\entry}[3]{
+\newcommand{\entry}[3]{%
     \begin{tabularx}{\textwidth}{@{\hspace{#1}}#2}
         #3
     \end{tabularx}
@@ -314,11 +321,11 @@
 %
 % \subsubsection{Redefine maketitle}
 %    \begin{macrocode}
-\renewcommand{\maketitle}{
-    \entry{0em}{Xr}{
-        \bfseries\zihao{4}\rcls@name  & \rcls@mobile \\
-        \rcls@organization            & \href{mailto:\rcls@mail}{\rcls@mail} \\
-        \rcls@address                 & \url{\rcls@homepage} \\
+\renewcommand{\maketitle}{%
+    \entry{0em}{Xr}{%
+        \bfseries\zihao{4}\rclsname  & \rclsmobile \\
+        \rclsorganization            & \href{mailto:\rclsmail}{\rclsmail} \\
+        \rclsaddress                 & \url{\rclshomepage} \\
     }
 }
 %    \end{macrocode}
@@ -329,14 +336,8 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\ifrcls@zh
-    \CTEXoptions[today=small]
-    \fancyfoot[L]{\footnotesize 最后更新：\today}
-\else
-    \CTEXoptions[today=old]
-    \fancyfoot[L]{\footnotesize Last Modified: \today}
-\fi
-\fancyfoot[R]{\footnotesize \url{\rcls@resumeurl}}
+\fancyfoot[L]{\footnotesize \rclsleftfooter}
+\fancyfoot[R]{\footnotesize \rclsrightfooter}
 %    \end{macrocode}
 %
 % \subsubsection{Empty refname}

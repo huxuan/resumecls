@@ -35,4 +35,5 @@
 *.cls
 *.pdf
 *.swp
+*.tar.gz
 .DS_Store

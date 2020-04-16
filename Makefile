@@ -12,7 +12,7 @@
 
 PACKAGE=resumecls
 
-.PHONY: all cls doc clean distclean
+.PHONY: all cls doc clean distclean dist
 
 all: doc
 
@@ -54,4 +54,10 @@ clean:
 distclean: clean
 	-@rm -f \
 		*.cls \
-		*.pdf
+		*.pdf \
+		*.tar.gz
+
+dist: distclean cls doc
+	touch $(PACKAGE).tar.gz
+	tar zcvf $(PACKAGE).tar.gz ./$(PACKAGE).pdf --exclude=$(PACKAGE).tar.gz \
+		--exclude-vcs --exclude-vcs-ignores  .

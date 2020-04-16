@@ -1,18 +1,27 @@
-# resumecls / [CTAN mirror](http://www.ctan.org/pkg/resumecls)
+# resumecls
 
-A LaTeX cls to typeset resume both in English and Chinese
+A LaTeX document class to typeset a resume or cv both in English and Chinese with more ease and flexibility.
 
-# Usage / How to get it
+## Installation
 
-- [`resumecls`](http://www.ctan.org/pkg/resumecls) has already been included in [CTAN](http://www.ctan.org/) Mirror.
-- To get the cls file you only need to update local CTAN Packages.
-- For how to use it you can refer to [`resumecls-example`](https://github.com/huxuan/resumecls-example) repo.
+Since [`resumecls`](http://www.ctan.org/pkg/resumecls) is included in the CTAN.
+You can install it by any package managers.
 
-## Manual Compile
+Take `tlgmr` as example,
 
-To get the cls file and document manually, you can make it either by Makefile or LaTeX command
+```shell
+tlmgr install resumecls
+```
 
-### Compile by Makefile (Recommended if your os supported)
+## Usage / Examples
+
+please refer to [`resumecls-example`](https://github.com/huxuan/resumecls-example).
+
+## Compile manually
+
+To get the document class file and document manually, you can compile via Makefile or LaTeX commands.
+
+### Compile by Makefile
 
 #### Get resumecls.cls
 ```shell
@@ -24,19 +33,17 @@ make cls
 make doc
 ```
 
-#### Clean
-Clean all generated files except for cls and pdf
+#### Clean intermediate generated files
 ```shell
 make clean
 ```
 
-#### DistClean
-Clean all generated files
+#### Clean for distribution
 ```shell
 make distclean
 ```
 
-### Compile by LaTeX command
+### Compile by LaTeX commands
 
 #### Get resumecls.cls
 ```shell

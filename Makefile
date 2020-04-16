@@ -3,11 +3,11 @@
 # | Author: huxuan
 # | E-mail: i(at)huxuan.org
 # | Created: 2012-12-18
-# | Last modified: 2013-03-17
+# | Last modified: 2020-04-16
 # | Description:
 # |     Makefile for resumecls
 # |
-# | Copyrgiht (c) 2012-2013 by huxuan. All rights reserved.
+# | Copyrgiht (c) 2012-2020 by huxuan. All rights reserved.
 # +-----------------------------------------------------------------------------
 
 PACKAGE=resumecls
@@ -53,4 +53,5 @@ clean:
 
 distclean: clean
 	-@rm -f \
-		*.cls
+		*.cls \
+		*.pdf

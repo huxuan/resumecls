@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
 % resumecls.dtx
-% Copyright (C) 2012-2015 by huxuan <i@huxuan.org>
+% Copyright (C) 2012-2020 by huxuan <i@huxuan.org>
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -24,10 +24,10 @@
 %<*driver>
 \ProvidesFile{\jobname.dtx}
 %</driver>
-%<class>\NeedsTeXFormat{LaTeX2e}[2011/06/27]
+%<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{resumecls}
 %<*class>
-    [2015/09/21 v0.3.2 Welcome, contributors]
+    [2020/04/16 v0.4.0 Hello 2020]
 %</class>
 %
 %<*driver>
@@ -81,7 +81,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{124}
+% \CheckSum{123}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -109,6 +109,7 @@
 % \changes{v0.3}{2013/06/17}{Long time no see, resumecls}
 % \changes{v0.3.1}{2015/09/20}{Compatible with TeXLive 2015 now}
 % \changes{v0.3.2}{2015/09/21}{Welcome, contributors}
+% \changes{v0.4.0}{2020/04/16}{Hello 2020}
 %
 % \GetFileInfo{\jobname.dtx}
 %
@@ -135,23 +136,23 @@
 % \maketitle
 %
 % \begin{abstract}
-% \resumecls is a \LaTeX cls making typeseting a resume or cv in both English
-% and Chinese more easily.
+% \resumecls is a document class to typeset a resume or cv both in English and
+% Chinese with more ease and flexibility.
 % \end{abstract}
 %
 % \section{Introduction}
 %
-% There do exist many resume cls already. But from my experience, most of them
-% are too complicated or lack of flexibility.
+% There do exist many resume document classes already. But from my experience,
+% most of them are a little bit complicated or lack of flexibility.
 %
 % \resumecls make all contents consists of heading/entry based on tabularx.
-% You can easily design the style and many recommended ones are also listed
-% in example files.
+% You can easily design the style and some recommended patterns are also listed
+% in the example.
 %
-% What's more, \resumecls already has ctex package imported which means it
-% support Chinese natively. The example-zh.tex and example-en.tex is almost
-% the same (in \LaTeX{} code, not the content). You need no more work
-% to make your resume both in English and Chinese.
+% What's more, \resumecls has CTeX intergated which means it support Chinese
+% natively. The example tex files for both English and Chinese are almost the
+% same except for the actual content. You can just focus on the content and
+% have your resume both in English and Chinese with no more work.
 %
 % \section{Usage}
 %
@@ -159,7 +160,7 @@
 % The heading part for each section.
 %
 % \DescribeMacro{\entry}
-% All contents except for heading.
+% All entry-like contents except for the heading.
 %
 % \DescribeMacro{\name}
 % Your Name.
@@ -168,22 +169,22 @@
 % Your unit, shcool or organization.
 %
 % \DescribeMacro{\address}
-% Your address and zip code.
+% Your address and possibily with zip code.
 %
 % \DescribeMacro{\mobile}
 % Your phone number.
 %
 % \DescribeMacro{\mail}
-% Your mail address.
+% Your email address.
 %
 % \DescribeMacro{\homepage}
 % Your homepage.
 %
 % \DescribeMacro{\leftfooter}
-% The content you want to put at left footer. Feel free to leave it blank.
+% The content you want to put at left footer. Feel free to leave it empty.
 %
 % \DescribeMacro{\rightrfooter}
-% The content you want to put at right footer. Feel free to leave it blank.
+% The content you want to put at right footer. Feel free to leave it empty.
 %
 % \StopEventually{\PrintChanges\PrintIndex}
 %
@@ -197,16 +198,15 @@
 %
 % \subsection{Import article class}
 %    \begin{macrocode}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
-\LoadClass[a4paper,12pt]{article}
+\LoadClass[a4paper,12pt]{ctexart}
 %    \end{macrocode}
 %
 % \subsection{Import packages}
 %    \begin{macrocode}
 \RequirePackage[top=.5in,bottom=.5in,left=.5in,right=.5in]{geometry}
 \RequirePackage[xetex,unicode]{hyperref}
-\RequirePackage[noindent]{ctex}
 \RequirePackage{tabularx}
 \RequirePackage{color}
 \RequirePackage{fancyhdr}
@@ -324,9 +324,9 @@
 %    \begin{macrocode}
 \renewcommand{\maketitle}{%
     \entry{0em}{Xr}{%
-        \bfseries\zihao{4}\rclsname  & \rclsmobile \\
-        \rclsorganization            & \href{mailto:\rclsmail}{\rclsmail} \\
-        \rclsaddress                 & \url{\rclshomepage} \\
+        \bfseries\zihao{4}\rclsname & \rclsmobile \\
+        \rclsorganization & \href{mailto:\rclsmail}{\rclsmail} \\
+        \rclsaddress & \url{\rclshomepage} \\
     }
 }
 %    \end{macrocode}
@@ -351,30 +351,16 @@
 %
 % \subsubsection{Font settings}
 %
-% Cause we recommend use Xe\LaTeX{} to compile, so you can easily setting
-% the font to whatever you like only if it exists on you computer.
-% Just add something like following code before |\begin{document}|.
-%
-% \iffalse
-%<*lst>
-% \fi
-\begin{lstlisting}
-\setmainfont{Times New Roman}
-\setCJKmainfont[BoldFont=(*黑体*)]{(*宋体*)}
-\end{lstlisting}
-% \iffalse
-%</lst>
-% \fi
+% Since we use Xe\LaTeX{} and CTeX, everything should be fine with no extra
+% configuration. But if you dedicated to, you can change the font as you like
+% only if Xe\LaTeX{} or CTeX supported.
 %
 % \subsubsection{Multiple pages}
 %
-% Currently, \resumecls doesn't support multiple pages very well. Before
-% showing the method for customization I want you relize that only one page
-% for resume is enough. \resumecls use |\begin{table}| and |\end{table}| to
-% enclose all contents so that the whole resume will be limited in one page.
-% But if you really want to have multiple pages, you can set multiple table
-% environments in your tex file and judge the place for new page yourself.
-% the code within document environment for two pages resume will looks like:
+% Since the document generated from \resumecls is just a bunch of tables, it is
+% prettey straightfoward to enclose the contents in multiple table environments
+% and use |\newpage| to split them into multiple pages. A minimal example looks
+% like the following:
 %
 % \iffalse
 %<*lst>
@@ -394,9 +380,8 @@ Contents for Page 2
 %
 % \section{Contributors}
 %
-% \begin{itemize}
-%   \item \href{https://github.com/idear1203}{IDEAR <idear1203@github>}
-% \end{itemize}
+% Please refer to
+% \href{https://github.com/huxuan/resumecls/graphs/contributors}{Contributors}.
 %
 % \Finale
 \endinput

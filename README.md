@@ -2,7 +2,13 @@
 
 A LaTeX document class to typeset a resume or cv both in English and Chinese with more ease and flexibility.
 
-## Installation
+## Online Preview & Edit (with Overleaf Template)
+
+An overleaf template is available [here](https://www.overleaf.com/latex/templates/resumecls-example/xncvhkjgyjvf) for preview.
+
+You can also edit it directly on the overleaf.
+
+## Installation (for Offline Usage)
 
 Since [`resumecls`](http://www.ctan.org/pkg/resumecls) is included in the CTAN.
 You can install it by any package managers.
@@ -17,11 +23,11 @@ tlmgr install resumecls
 
 please refer to [`resumecls-example`](https://github.com/huxuan/resumecls-example).
 
-## Compile manually
+## Offline Compile
 
 To get the document class file and document manually, you can compile via Makefile or LaTeX commands.
 
-### Compile by Makefile
+### Makefile
 
 #### Get resumecls.cls
 ```shell
@@ -43,7 +49,7 @@ make clean
 make distclean
 ```
 
-### Compile by LaTeX commands
+### LaTeX
 
 #### Get resumecls.cls
 ```shell

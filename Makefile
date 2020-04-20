@@ -3,7 +3,7 @@
 # | Author: huxuan
 # | E-mail: i(at)huxuan.org
 # | Created: 2012-12-18
-# | Last modified: 2020-04-16
+# | Last modified: 2020-04-20
 # | Description:
 # |     Makefile for resumecls
 # |
@@ -12,7 +12,7 @@
 
 PACKAGE=resumecls
 
-.PHONY: all cls doc clean distclean dist
+.PHONY: all cls doc dist clean distclean
 
 all: doc
 
@@ -34,7 +34,13 @@ $(PACKAGE).pdf: $(PACKAGE).cls
 	xelatex $(PACKAGE).dtx
 	xelatex $(PACKAGE).dtx
 
-# clean & distclean
+# dist & clean
+
+dist: distclean cls doc
+	mv $(PACKAGE).cls example/
+	cd example && make dist
+	cd .. && find $(PACKAGE) -name '*.pdf' | tar zcvf $(PACKAGE).tar.gz \
+		-T - --exclude-vcs --exclude-vcs-ignores $(PACKAGE)
 
 clean:
 	-@rm -f \
@@ -56,8 +62,3 @@ distclean: clean
 		*.cls \
 		*.pdf \
 		*.tar.gz
-
-dist: distclean cls doc
-	touch $(PACKAGE).tar.gz
-	tar zcvf $(PACKAGE).tar.gz ./$(PACKAGE).pdf --exclude=$(PACKAGE).tar.gz \
-		--exclude-vcs --exclude-vcs-ignores  .

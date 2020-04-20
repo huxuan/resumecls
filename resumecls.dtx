@@ -27,7 +27,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{resumecls}
 %<*class>
-    [2020/04/16 v0.4.0 Hello 2020]
+    [2020/04/20 v0.4.1 Minor fix with enhanced examples]
 %</class>
 %
 %<*driver>
@@ -110,6 +110,7 @@
 % \changes{v0.3.1}{2015/09/20}{Compatible with TeXLive 2015 now}
 % \changes{v0.3.2}{2015/09/21}{Welcome, contributors}
 % \changes{v0.4.0}{2020/04/16}{Hello 2020}
+% \changes{v0.4.1}{2020/04/20}{Minor fix with enhanced examples}
 %
 % \GetFileInfo{\jobname.dtx}
 %
@@ -359,8 +360,8 @@
 %
 % Since the document generated from \resumecls is just a bunch of tables, it is
 % prettey straightfoward to enclose the contents in multiple table environments
-% and use |\newpage| to split them into multiple pages. A minimal example looks
-% like the following:
+% and use |\clearpage| to split them into multiple pages. A minimal example
+% looks like the following:
 %
 % \iffalse
 %<*lst>
@@ -369,7 +370,7 @@
 \begin{table}
 Contents for Page 1
 \end{table}
-\newpage
+\clearpage
 \begin{table}
 Contents for Page 2
 \end{table}
